@@ -40,6 +40,10 @@ header {
     border-bottom: 1vh solid var(--primary-400);
 }
 
+a {
+  color: #00ffff;
+}
+
 header h1 {
     margin: 0;
     font-size: 2.5rem;
