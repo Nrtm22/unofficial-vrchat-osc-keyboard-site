@@ -29,7 +29,7 @@
     </header>
 -->
 
-    <img src="./site_header.webp" alt="デカヘッダー" width="100%">
+    <img class="header-img" src="./site_header.webp" alt="デカヘッダー" width="100%">
 
     <main class="container">
         <section class="hero-card">
@@ -41,12 +41,26 @@
         </section>
     </main>
     
+    <div class="button-container">
+    
+		 <p>最新バージョン: <span id="v-tag">---</span> (<span id="release-date">---</span> 公開)</p>
+		<details>
+			<summary>更新内容を見る</summary>
+			<zero-md id="release-body-md"></zero-md>
+		</details>
+
+		  <a id="download-exe" href="#" class="btn">Windows版インストーラーをダウンロード</a>
+		  <br>
+		  <a id="release-page" href="#" class="btn" target="_blank">リリースノートを見る ↗</a>
+	</div>
+    
     <footer>
     <img src="http://counter.seku.su/cmoe?name=unofficial-vrchat-osc-keyboard-site&theme=mbs" alt="hit counter" width="20%" />
     <p> (c) 2026 unofficial vrchat osc keyboard site </p>
     </footer>
     
   </body>
+  <script src="script.js" defer></script>
 </html>
 
 
