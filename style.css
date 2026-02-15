@@ -1,5 +1,6 @@
 /* 基本設定 */
 :root {
+    /* ベースとなるプライマリ（シアン系） */
     --primary-50: rgb(236 254 255);
     --primary-100: rgb(207 250 254);
     --primary-200: rgb(165 243 252);
@@ -10,8 +11,7 @@
     --primary-700: rgb(14 116 144);
     --primary-800: rgb(21 94 117);
     --primary-900: rgb(22 78 99);
-    --primary-50-triad-0: #FFECFE;
-    --primary-50-triad-1: #FEFFEC;
+    
     --bg-color: #111;
     --card-bg: #ffffff;
 }
@@ -50,6 +50,13 @@ header h1 {
     letter-spacing: 2px;
 }
 
+.header-img {
+	display: block;    /* ブロック要素に変更 */
+    margin-left: auto; /* 左の余白を自動 */
+    margin-right: auto;/* 右の余白を自動 */
+	width: 100vmin;
+}
+
 .subtitle {
     margin-top: 10px;
     opacity: 0.9;
@@ -59,11 +66,11 @@ header h1 {
 /* メインカード */
 .hero-card {
     background: var(--bg-color);
-    padding: 1vh 1vw;
-    border-radius: 15px;
+    padding: 2dvh 2dvw;
+    border-radius: 2dvmax;
     color: whitesmoke;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    margin-bottom: 30px;
+    box-shadow: 0 1dvmin 2dvmin rgba(0,0,0,0.25);
+    margin-bottom: 2dvmin;
 }
 
 .hero-card h2 {
@@ -95,38 +102,31 @@ header h1 {
 /* ボタン */
 .button-container {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 1vmin;
 }
 
 .btn {
     display: inline-block;
-    padding: 12px 30px;
-    background-color: var(--primary-color);
-    color: white;
+    padding: 2dvh 2dvw;
+    background-color: var(--primary-300);
+    color: #333;
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 4dvmax;
     font-weight: bold;
     transition: transform 0.2s, background-color 0.2s;
-    margin: 5px;
+    margin: 2vmin;
+    box-shadow: 0 1dvmin 2dvmin rgba(0,0,0,0.25);
 }
 
 .btn:hover {
-    background-color: #5fb35f;
-    transform: translateY(-2px);
-}
-
-.btn.secondary {
-    background-color: var(--accent-color);
-}
-
-.btn.secondary:hover {
-    background-color: #ff80bb;
+    background-color: var(--primary-200);
+    transform: translateY(1dvmin);
 }
 
 /* フッター */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 2dvh;
     font-size: 0.6rem;
     color: #888;
 }
