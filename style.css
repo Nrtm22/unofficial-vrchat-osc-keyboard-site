@@ -32,15 +32,16 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--primary-900);
+    background-color: var(--primary-600);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: 2026; /* 一番手前に表示 */
-    clip-path: circle(150% at 50% 50%); 
-    opacity: 1;
-    transition: clip-path 1.5s ease-in-out, opacity 0.5s ease-in-out 1.0s;
+    /* スライドのアニメーション設定 */
+    transform: translateY(0); /* 初期位置 */
+    /* transition の対象を transform に変更 */
+    transition: transform 1.0s ease-in;
 }
 
 /* ロード中の画像 */
@@ -53,13 +54,12 @@ body {
 .loader-text {
     color: var(--primary-50);
     font-weight: bold;
+    text-align: center;
 }
 
 /* 消える時のアニメーションクラス */
 #loader.loaded {
-    opacity: 0;
-    /* 真ん中から円形に消えていくエフェクト */
-    clip-path: circle(0% at 50% 50%);
+    transform: translateY(100%);
     pointer-events: none;
 }
 
@@ -85,11 +85,29 @@ header {
 }
 
 a {
-  color: var(--primary-300);
+  color: var(--primary-200);
 }
 
 .a-tag-dark {
     color: var(--primary-800)
+}
+
+details {
+    background: var(--bg-color);
+    text-align: left;
+    margin: 0 8dvmax;
+    margin-bottom: 2dvmin;
+    padding: 1.5dvh 1.5dvw;
+    padding-bottom: 0.5dvmin;
+    border-radius: 2dvmax;
+    color: whitesmoke;
+    border: 0.5dvmin solid var(--primary-200);
+}
+
+summary {
+    background: transparent;
+    padding-bottom: 1.5dvh;
+    text-align: center;
 }
 
 header h1 {
@@ -158,25 +176,26 @@ header h1 {
 /* ボタン */
 .button-container {
     text-align: center;
-    margin-bottom: 1vmin;
+    margin-bottom: 1dvmin;
 }
 
 .btn {
     display: inline-block;
-    padding: 2dvh 2dvw;
+    padding: 2dvmax 2dvw;
     background-color: var(--primary-300);
     color: #333;
     text-decoration: none;
     border-radius: 4dvmax;
     font-weight: bold;
     transition: transform 0.2s, background-color 0.2s;
-    margin: 2vmin;
+    margin: 2dvmin 10dvw ;
     box-shadow: 0 1dvmin 2dvmin rgba(0,0,0,0.25);
+    transition-duration: 5s;
 }
 
 .btn:hover {
     background-color: var(--primary-200);
-    transform: translateY(1dvmin);
+    transform: translateY(-100dvh);
 }
 
 /* フッター */
