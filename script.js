@@ -3,10 +3,10 @@ const jsonUrl = 'https://raw.githubusercontent.com/fuku2019/VRChat-OSC-Keyboard/
 fetch(jsonUrl)
   .then(res => res.json())
   .then(data => {
-    // 1. バージョンタグを表示
+    // バージョンタグを取得
     document.getElementById('v-tag').innerText = data.tag_name;
 
-    // リリース日時を表示（日本時間でフォーマット）
+    // リリース日時を取得（日本時間でフォーマット）
     if (data.published_at) {
         const date = new Date(data.published_at);
         const formattedDate = date.toLocaleDateString('ja-JP', {
@@ -17,13 +17,14 @@ fetch(jsonUrl)
         document.getElementById('release-date').innerText = formattedDate;
     }
 
-    // 2. リリースノートページへのリンクを設定
+    // リリースノートページへのリンクを取得
     document.getElementById('release-page').href = data.html_url;
 
-    // 3. assets配列から .exe ファイルを探してリンクを設定
+    // assets配列から .exe ファイルを探してリンクを取得
     const exeAsset = data.assets.find(asset => asset.name.endsWith('.exe'));
     if (exeAsset) {
       document.getElementById('download-exe').href = exeAsset.browser_download_url;
+      document.getElementById('file-name-display').innerText = exeAsset.name;
     }
     
     // リリースノート（body）の反映
@@ -37,11 +38,9 @@ fetch(jsonUrl)
     console.error("JSONの読み込みに失敗しました:", err);
     document.getElementById('v-tag').innerText = "取得エラー";
   });
-
+  
+// ロード画面
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
-    
-    setTimeout(() => {
-        loader.classList.add('loaded');
-    }, 250);
+    loader.classList.add('loaded');
 });
