@@ -4,7 +4,7 @@
     <meta name="google-site-verification" content="j-aluTNgXGNE30sHV8BnyxeTVWJQc-abetGb0DR7Ps8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css?v=1"">
+    <link rel="stylesheet" href="style.css?v=2">
     <script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3?register"></script>
     <title> VRChat-OSC-Keyboard | 非公式ホームページ(サイト未完成) </title>
     <meta name="description" content="VRChat OSC Keyboardは、OSC経由でチャット入力ができるツールです。モダンなUIで、快適に操作できます。">
@@ -20,31 +20,57 @@
   
   </head>
   <body>
-<!--
+
+    <div id="loader">
+        <div class="loader-content">
+            <img src="./site_header.webp" alt="読み込み中" class="loader-img">
+            <p class="loader-text">読み込み中...</p>
+        </div>
+    </div>
+
     <header>
         <div class="container">
-            <h1>VRChat-OSC-Keyboard<br>(旧:VRC-OSC-Keyboard)</h1>
-            <p class="subtitle">Unofficial Site <br> 🚧未完成のサイト🚧 </p>
+            <h1>超モダン<span class="colored-txt">VRChat用キーボード</span></h1>
+            <p class="subtitle">
+                <a href="https://github.com/fuku2019/VRChat-OSC-Keyboard" target="_blank">VRChat-OSC-Keyboard</a>は、Electronで作成されたVRChat用のツールであり、
+                <br>VRモードのチャットパフォーマンスを向上させます。
+            </p>
         </div>
     </header>
--->
 
+    <!--
     <img class="header-img" src="./site_header.webp" alt="デカヘッダー" width="100%">
+    -->
 
     <main class="container">
         <section class="hero-card">
-            <p><a href="https://github.com/fuku2019/VRChat-OSC-Keyboard" target="_blank">VRChat-OSC-Keyboard</a>はVRChatでの文字入力を快適にするためのツールです。<br>OSC経由でチャットボックスへメッセージを送信できます。<br>さまざまな便利機能が追加される予定です。</p>
+            <h2>なぜVRChat OSC Keyboardを使うのか？</h2>
+            <p>VRChatはVRモードでのチャットが、デスクトップモードに比べるとかなり不便です。<br>
+            物理キーボードで入力と変換ができれば快適です。<br>
+            VRChat OSC Keyboardはそれを可能にします。
+            </p>
             <details>
-	            <summary>READMEを見る📑</summary>
+	            <summary>READMEを展開</summary>
 	            <zero-md src="https://raw.githubusercontent.com/fuku2019/VRChat-OSC-Keyboard/refs/heads/main/README.md"></zero-md>
             </details>
+            
+            <h2>どのように動作するか？</h2>
+            <p>VRChatのOSC機能を使用します。<br>
+            ツールのテキストボックスに入力した文字を、OSCを通じてVRChatのチャットボックスに送信します。<br>
+            </p>
+            <img class="img-img" src="./app_img_0.webp" alt="ツール画面" width="100%">
+
         </section>
     </main>
     
     <div class="button-container">
     
-		 <p>最新バージョン: <span id="v-tag">---</span> (<span id="release-date">---</span> 公開)</p>
-		<details>
+		<p>
+            最新バージョン: <span id="v-tag">---</span> (<span id="release-date">---</span> 公開)
+            <br>
+            <a class="a-tag-dark" href="https://github.com/fuku2019/VRChat-OSC-Keyboard" target="_blank">Github</a>
+        </p>
+        <details>
 			<summary>更新内容を見る</summary>
 			<zero-md id="release-body-md"></zero-md>
 		</details>
@@ -55,12 +81,14 @@
 	</div>
     
     <footer>
+    
     <img src="http://counter.seku.su/cmoe?name=unofficial-vrchat-osc-keyboard-site&theme=mbs" alt="hit counter" width="20%" />
+    
     <p> (c) 2026 unofficial vrchat osc keyboard site </p>
     </footer>
     
   </body>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=2" defer></script>
 </html>
 
 

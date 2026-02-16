@@ -37,3 +37,11 @@ fetch(jsonUrl)
     console.error("JSONの読み込みに失敗しました:", err);
     document.getElementById('v-tag').innerText = "取得エラー";
   });
+
+window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    
+    setTimeout(() => {
+        loader.classList.add('loaded');
+    }, 250);
+});

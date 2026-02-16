@@ -25,6 +25,50 @@ body {
     padding: 0;
 }
 
+/* ロード画面のスタイル */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-900);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2026; /* 一番手前に表示 */
+    clip-path: circle(150% at 50% 50%); 
+    opacity: 1;
+    transition: clip-path 1.5s ease-in-out, opacity 0.5s ease-in-out 1.0s;
+}
+
+/* ロード中の画像 */
+.loader-img {
+    width: 100dvh;
+    margin-bottom: 1dvmin;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.loader-text {
+    color: var(--primary-50);
+    font-weight: bold;
+}
+
+/* 消える時のアニメーションクラス */
+#loader.loaded {
+    opacity: 0;
+    /* 真ん中から円形に消えていくエフェクト */
+    clip-path: circle(0% at 50% 50%);
+    pointer-events: none;
+}
+
+/* 画像をふわふわさせるアニメーション */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -35,19 +79,33 @@ body {
 header {
     background-color: var(--bg-color);
     color: whitesmoke;
-    padding: 4vh 0;
+    padding: 2dvh 0;
     text-align: center;
     border-bottom: 1vh solid var(--primary-400);
 }
 
 a {
-  color: #00ffff;
+  color: var(--primary-300);
+}
+
+.a-tag-dark {
+    color: var(--primary-800)
 }
 
 header h1 {
     margin: 0;
     font-size: 2.5rem;
     letter-spacing: 2px;
+}
+
+.colored-txt {
+    color: var(--primary-400)
+}
+
+.subtitle {
+    margin-top: 10px;
+    opacity: 0.9;
+    font-weight: bold;
 }
 
 .header-img {
@@ -57,10 +115,8 @@ header h1 {
 	width: 100vmin;
 }
 
-.subtitle {
-    margin-top: 10px;
-    opacity: 0.9;
-    font-weight: bold;
+.img-img {
+    object-fit: cover;
 }
 
 /* メインカード */
@@ -74,8 +130,8 @@ header h1 {
 }
 
 .hero-card h2 {
-    color: var(--primary-color);
-    border-bottom: 2px solid #eee;
+    color: white;
+    border-bottom: 0.5dvmin solid var(--primary-200);
     padding-bottom: 10px;
 }
 
@@ -127,6 +183,6 @@ header h1 {
 footer {
     text-align: center;
     padding: 2dvh;
-    font-size: 0.6rem;
+    font-size: 0.75rem;
     color: #888;
 }
