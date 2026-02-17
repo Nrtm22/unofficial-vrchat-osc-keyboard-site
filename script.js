@@ -41,6 +41,22 @@ fetch(jsonUrl)
   
 // ロード画面
 window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
-    loader.classList.add('loaded');
+	/*
+	const el = document.getElementById("load-title");
+	const text = new ShuffleText(el);
+	text.start()
+	*/
+	setTimeout(() => {
+	    const loader = document.getElementById('loader');
+	    loader.classList.add('loaded');
+	    const mainC = document.getElementById('mainC');
+	    mainC.classList.add('loaded');
+	    // テキストシャッフル
+		const el = document.getElementById("shuffle-pls");
+		const text = new ShuffleText(el);
+		text.duration = 2000; 
+		text.sourceRandomCharacter = el.innerText;
+		text.emptyCharacter = "";
+		text.start();
+		}, 1000);
 });
