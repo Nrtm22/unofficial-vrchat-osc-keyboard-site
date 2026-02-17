@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css?v=3">
+    
     <script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3?register"></script>
+    
+    <script src="
+https://cdn.jsdelivr.net/npm/shuffle-text/build/shuffle-text.min.js
+"></script>
+
     <title> VRChat-OSC-Keyboard | 非公式ホームページ(サイト未完成) </title>
     <meta name="description" content="VRChat OSC Keyboardは、OSC経由でチャット入力ができるツールです。モダンなUIで、快適に操作できます。">
     
@@ -26,14 +32,18 @@
             <!--
 			<img src="./site_header.webp" alt="読み込み中" class="loader-img">
 			-->
+			<!--
+			<h1 id="load-title" class="colored-txt">VRChat OSC Keyboard</h1>
+			
 
             <p class="loader-text">読み込み中...</p>
+            -->
         </div>
     </div>
 
     <header>
         <div class="container">
-            <h1>超モダン<span class="colored-txt">VRChat用キーボード</span></h1>
+            <h1>超モダン<span id="shuffle-pls"class="colored-txt">VRChat用キーボード</span></h1>
             <p class="subtitle">
                 <a href="https://github.com/fuku2019/VRChat-OSC-Keyboard" target="_blank">VRChat-OSC-Keyboard</a>は、Electronで作成されたVRChat用のツールであり、
                 <br>VRモードのチャットパフォーマンスを向上させます。
@@ -45,7 +55,7 @@
     <img class="header-img" src="./site_header.webp" alt="デカヘッダー" width="100%">
     -->
 
-    <main class="container">
+    <main class="container" id='mainC'>
         <section class="hero-card">
             <h2>なぜVRChat OSC Keyboardを使うのか？</h2>
             <p>VRChatはVRモードでのチャットが、デスクトップモードに比べるとかなり不便です。<br>
@@ -101,6 +111,7 @@
     
     
     <img src="http://counter.seku.su/cmoe?name=unofficial-vrchat-osc-keyboard-site&theme=mbs" alt="hit counter" width="20%" />
+    
     
     
     <p> (c) 2026 unofficial vrchat osc keyboard site </p>
