@@ -17,12 +17,17 @@
 }
 
 body {
-    font-family: Roboto, 'Note Sans JP';
+    font-family: Roboto, 'Note Sans JP', sans-serif;
     background-color: var(--primary-50);
     color: #333;
     line-height: 1.6;
     margin: 0;
     padding: 0;
+}
+
+img {
+    width: 100%;
+    height: auto;
 }
 
 /* ロード画面のスタイル */
@@ -62,11 +67,6 @@ body {
     text-align: center;
 }
 
-.loader-text h1{
-
-
-}
-
 #mainC.loaded {
 	opacity: 1;
 	/* transform: translateY(0); */
@@ -86,9 +86,9 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 100dvmin;
     margin: 0 auto;
-    padding: 1vh;
+    padding: 2vh;
 }
 
 /* ヘッダー */
@@ -190,6 +190,11 @@ header h1 {
     object-fit: cover;
 }
 
+.hit-img {
+    width: 15dvmax;
+    height: auto;
+}
+
 /* メインカード */
 .hero-card {
     background: var(--bg-color);
@@ -229,6 +234,8 @@ header h1 {
 /* ボタン */
 .button-container {
     text-align: center;
+    max-width: 100dvmin;
+    margin: 0 auto;
     margin-bottom: 1dvmin;
 }
 
