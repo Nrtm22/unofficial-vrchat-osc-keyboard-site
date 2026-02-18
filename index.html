@@ -4,7 +4,7 @@
     <meta name="google-site-verification" content="j-aluTNgXGNE30sHV8BnyxeTVWJQc-abetGb0DR7Ps8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=6">
     
     <script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3?register"></script>
     
@@ -12,8 +12,8 @@
 https://cdn.jsdelivr.net/npm/shuffle-text/build/shuffle-text.min.js
 "></script>
 
-    <title> VRChat-OSC-Keyboard | 非公式ホームページ(サイト未完成) </title>
-    <meta name="description" content="VRChat OSC Keyboardは、OSC経由でチャット入力ができるツールです。モダンなUIで、快適に操作できます。">
+    <title> VRChat-OSC-Keyboard | 非公式ウェブサイト(サイト未完成) </title>
+    <meta name="description" content="VRChat OSC Keyboardは、OSC機能でVRChatのチャットに、物理キーボードで入力ができるツールです。モダンなUIで快適に操作できます。">
     
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
     <link rel="alternate icon" href="./favicon.ico">
@@ -21,7 +21,7 @@ https://cdn.jsdelivr.net/npm/shuffle-text/build/shuffle-text.min.js
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nrtm22.github.io/unofficial-vrchat-osc-keyboard-site/">
     <meta property="og:title" content="VRChat OSC Keyboard">
-    <meta property="og:description" content="VRChatでOSCを利用してキーボード入力を可能にするツールです。">
+    <meta property="og:description" content="VRChatでOSCを利用してキーボード入力を可能にするツールの非公式ウェブサイト">
     <meta property="og:image" content="https://raw.githubusercontent.com/Nrtm22/unofficial-vrchat-osc-keyboard-site/refs/heads/main/ogp-thumbnail.webp">
   
   </head>
@@ -43,10 +43,12 @@ https://cdn.jsdelivr.net/npm/shuffle-text/build/shuffle-text.min.js
 
     <header>
         <div class="container">
-            <h1>超モダン<span id="shuffle-pls"class="colored-txt">VRChat用キーボード</span></h1>
+            <h1>VRChat <span id="shuffle-pls"class="colored-txt">OSC Keyboard</span></h1>
+            <h2>非公式ウェブサイト(サイト未完成)</h2>
             <p class="subtitle">
-                <a href="https://github.com/fuku2019/VRChat-OSC-Keyboard" target="_blank">VRChat-OSC-Keyboard</a>は、Electronで作成されたVRChat用のツールであり、
-                <br>VRモードのチャットパフォーマンスを向上させます。
+                <a href="https://github.com/fuku2019/VRChat-OSC-Keyboard" target="_blank">VRChat OSC Keyboard</a>は、OSC機能でVRChatのチャットに、
+                <br>物理キーボードで入力ができるツールです。
+                <br>モダンなUIで快適に操作できます。
             </p>
         </div>
     </header>
@@ -56,36 +58,56 @@ https://cdn.jsdelivr.net/npm/shuffle-text/build/shuffle-text.min.js
     -->
 
     <main class="container" id='mainC'>
+        <section class="top-notice">
+            <h3>⚠️サイトに関する注意⚠️</h3>
+                <p>
+                    このサイトはVRChatを普段プレイしない人が作ってます。
+                    <br>ツールを作ってる別の人は普段からVRChatをプレイしてます。
+                </p>
+            <h3>⚠️ツールに関する注意⚠️</h3>
+            <p>
+                「一般VRChatterが、AntigravityやCodexを使って適当に作った実験的なツールです。
+                <br>このソフトの使用によって発生したトラブルについては、自己責任でお願いします。」
+                <br>by ツール作ってる人
+            </p>
+        </section>
         <section class="hero-card">
-            <h2>なぜVRChat OSC Keyboardを使うのか？</h2>
-            <p>VRChatはVRモードでのチャットが、デスクトップモードに比べるとかなり不便です。<br>
-            物理キーボードで入力と変換ができれば快適です。<br>
-            VRChat OSC Keyboardはそれを可能にします。
-            </p>
-            <details>
-	            <summary>README</summary>
-	            <zero-md src="https://raw.githubusercontent.com/fuku2019/VRChat-OSC-Keyboard/refs/heads/main/README.md"></zero-md>
-            </details>
-            
-            <h2>どのように動作するか？</h2>
-            <p>VRChatのOSC機能を使用します。<br>
-            ツールのテキストボックスに入力した文字を、OSCを通じてVRChatのチャットボックスに送信します。<br>
-            </p>
-            <img class="img-img" src="./app_img_0.webp" alt="ツール画面" width="1086" height="693">
-            
-            <h2>機能と特徴</h2>
-            <ul class="future-list">
-            <li>モダンなデザインとしっとりとした打ち心地を持ちながらもシンプルな味付けで食べやすく美味しい</li>
-            <li>文字数制限があなたの送りすぎを阻止してチャットボックスの食べ切れる量に制限します</li>
-            <li>好みに合わせて選べる3種類の苦さ ダーク、ライト、ピュアブラックモード</li>
-            <li>自動更新機能が毎日新鮮なキーボードを提供します</li>
-            <li>カスタムカラーで50331648もの組み合わせが可能</li>
-            <li>自動送信機能でお腹を空かせない</li>
-            <li>設定リセットでリフレッシュ</li>
-            <li>VRオーバーレイ</li>
-            <li>入力した文字をクリップボードにコピーできて同じ味が楽しめる</li>
-            </ul>
-            <p>すべての機能、特徴を記載することはできません。是非、試用してみましょう。</p>
+            <h2>はじめに知ってほしいこと、伝えたいこと</h2>
+                <div class="hero-card-section">    
+                    <h3>VRChat OSC Keyboardとは何なのか</h3>
+                        <p>
+                            VRChatというソーシャルVRプラットフォームで、チャット入力を快適にするためのツールです。
+                            <br>VRChatはVRモードでのチャットの入力が不便ですが、このツールはVRChatのOSC機能を利用して、物理キーボード入力・変換ができる快適なテキストチャットを可能にします。
+                        </p>
+                    <h3>このツールの大きな機能・特徴</h3>
+                            <p>モダンなデザインとアニメーション。</p>
+                            <p>好みに合わせて選べる、3種類のテーマ。 (ライト、ダーク、ピュアブラックモード)</p>
+                            <p>アクセントカラーを、カラーホイールで変更できます。</p>
+                            <p>Electronで構築された、オープンソースソフトウェアです。</p>
+                            <p>内蔵キーボード(かな・カナ・英)＆物理キーボードで、入力ができます。</p>
+                            <p>物理キーボード入力時は、変換(IME)が使えます。</p>
+                    <img class="img-img" src="./app_img_0.webp" alt="ツール画面" width="1086" height="693">
+                </div>
+
+
+            <h2>書きかけのセクション</h2>
+                <div class="hero-card-section">
+                    <details>
+                        <summary>README</summary>
+                        <zero-md src="https://raw.githubusercontent.com/fuku2019/VRChat-OSC-Keyboard/refs/heads/main/README.md"></zero-md>
+                    </details>
+                    
+                    <h3>その他の機能と特徴</h3>
+                        <ul>
+                            <li>ツール内の文字数制限機能が入力文字を、VRChatの最大文字数以下に制限します</li>
+                            <li>自動更新機能で新しいバージョンが、簡単にインストールできます</li>
+                            <li>自動送信機能</li>
+                            <li>設定リセット</li>
+                            <li>SteamVRにネイティブ表示できます</li>
+                            <li>ツールに入力した文字を、クリップボードにコピーできます</li>
+                        </ul>
+                        <p>すべての機能、特徴を記載することはできません。是非、試用してみましょう。</p>
+                </div>
 
         </section>
     </main>
@@ -118,7 +140,7 @@ https://cdn.jsdelivr.net/npm/shuffle-text/build/shuffle-text.min.js
     </footer>
     
   </body>
-  <script src="script.js?v=5" defer></script>
+  <script src="script.js?v=6" defer></script>
 </html>
 
 

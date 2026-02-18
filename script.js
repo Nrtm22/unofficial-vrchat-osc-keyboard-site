@@ -58,5 +58,5 @@ window.addEventListener('load', () => {
 		text.sourceRandomCharacter = el.innerText;
 		text.emptyCharacter = "";
 		text.start();
-		}, 1000);
+		}, 500);
 });
