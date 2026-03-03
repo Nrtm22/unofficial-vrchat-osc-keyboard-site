@@ -12,14 +12,13 @@
     --primary-800: rgb(21 94 117);
     --primary-900: rgb(22 78 99);
     
-    --bg-color: #111;
-    --notice-bg: #ffffff;
+    --card-bg: #001f1f;
 }
 
 body {
-    font-family: Roboto, 'Note Sans JP', sans-serif;
-    background-color: var(--primary-50);
-    color: #333;
+    font-family: Roboto, 'Noto Sans JP', sans-serif;
+    background-color: #000;
+    color: whitesmoke;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -37,7 +36,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--bg-color);
+    background-color: #000;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,6 +47,7 @@ img {
     transition: opacity 0.5s ease-in;
 }
 
+/* メインコンテンツ */
 #mainC {
 	/* transform: translateY(100%); */
 	opacity: 1;
@@ -88,73 +88,41 @@ img {
 .container {
     max-width: 100dvmin;
     margin: 0 auto;
-    padding: 2vh;
+    padding: 2dvh;
 }
 
 /* ヘッダー */
 header {
-	position: relative;
-	overflow: hidden;
-    background-color: var(--bg-color);
+    background-color: var(--card-bg);
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('./app_img_0.webp') center/cover no-repeat;
+    border-radius: 2dvmax;
     color: whitesmoke;
-    padding: 2dvh 0;
+    box-shadow: 0 0 2dvmin 0 rgba(0,0,0,0.25);
     text-align: center;
-    border-bottom: 2dvmin solid var(--primary-400);
-}
-
-
-/* 背景画像を動かすための専用レイヤー */
-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('app_img_0.webp');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    
-    animation: moveBackground 8s ease-in-out infinite alternate;
-    pointer-events: none;
+    margin: 2dvh;
+    margin-bottom: 0;
 }
 
 header .container {
-    position: relative;
-    z-index: 2;   /* 画像(z-index: 0)より上に表示 */
+	max-width: 100dvw;
     text-shadow: 0.075rem 0.075rem 0.2rem black;
 }
-
-/* 画像を動かすアニメーション */
-@keyframes moveBackground {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-    100% {
-        transform: translate(0, 0) scale(1.25);
-    }
-}
-
 
 a {
   color: var(--primary-200);
 }
 
-.a-tag-dark {
-    color: var(--primary-800)
-}
-
 details {
-    background: var(--bg-color);
+    background: var(--primary-300);
     text-align: left;
     margin: 0 8dvmax;
     margin-bottom: 2dvmin;
     padding: 1.5dvh 1.5dvw;
     padding-bottom: 0.5dvmin;
     border-radius: 2dvmax;
-    color: whitesmoke;
-    border: 0.5dvmin solid var(--primary-200);
+    color: #333;
+    font-weight: bold;
 }
 
 summary {
@@ -167,11 +135,12 @@ header h1 {
     margin: 0;
     font-size: 2.5rem;
     letter-spacing: 0.025rem;
+    line-height: 2.525rem;
     color: white;
 }
 
 header h2 {
-    margin: 0;
+    margin: 0.75rem;
     font-size: 1.5rem;
     letter-spacing: 0.015rem;
     color: whitesmoke;
@@ -201,17 +170,18 @@ header h2 {
 .hit-img {
     width: 15dvmax;
     height: auto;
+    filter: invert(100%);
 }
 
 .top-notice {
-    background: var(--bg-notice);
-    padding: 1rem 6dvw;
+    background: var(--card-bg);
+    color: whitesmoke;
+    padding: 0.5rem 6dvw;
     border-radius: 2dvmax;
-    color: #333;
-    font-weight: bold;
     text-align: center;
-    box-shadow: 0 1dvmin 2dvmin rgba(0,0,0,0.25);
-    margin-bottom: 2dvmin;
+    box-shadow: 0 0 2dvmin 0 rgba(0,0,0,0.25);
+    margin-top: 4dvmin;
+    margin-bottom: 0;
 }
 
 .top-notice p {
@@ -219,18 +189,20 @@ header h2 {
 }
 
 .top-notice h3 {
-    color: black;
+    font-weight: bold;
+    border-bottom: 0.25rem solid var(--primary-200);
     margin-bottom: 0;
 }
 
 /* メインカード */
 .hero-card {
-    background: var(--bg-color);
+    background: var(--card-bg);
     padding: 2dvh 6dvw;
     border-radius: 2dvmax;
     color: whitesmoke;
-    box-shadow: 0 1dvmin 2dvmin rgba(0,0,0,0.25);
-    margin-bottom: 2dvmin;
+    box-shadow: 0 0 2dvmin 0 rgba(0,0,0,0.25);
+    margin-top: 4dvmin;
+    margin-bottom: 0;
 }
 
 .hero-card-section {
@@ -241,7 +213,7 @@ header h2 {
 .hero-card h2 {
     color: white;
     padding: 0.5rem;
-    border-bottom: 0.5dvmin solid var(--primary-200);
+    border-bottom: 0.25rem solid var(--primary-200);
 }
 
 .hero-card h3 {
@@ -281,11 +253,11 @@ header h2 {
     background-color: var(--primary-300);
     color: #333;
     text-decoration: none;
-    border-radius: 4dvmax;
+    border-radius: 100dvmax;
     font-weight: bold;
     transition: transform 0.2s, background-color 0.2s;
     margin: 2dvmin 10dvw ;
-    box-shadow: 0 1dvmin 2dvmin rgba(0,0,0,0.25);
+    box-shadow: 0 0 2dvmin 0 rgba(0,0,0,0.25);
     transition-duration: 5s;
 }
 
