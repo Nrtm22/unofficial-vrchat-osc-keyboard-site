@@ -60,3 +60,19 @@ window.addEventListener('load', () => {
 		text.start();
 		}, 500);
 });
+
+const video = document.querySelector('.video-background video');
+
+if (video) {
+    // 動画が再生可能な状態になったら実行
+    video.addEventListener('canplay', () => {
+        video.classList.add('is-playing');
+    });
+
+    // 万が一エラーで読み込めない場合の処理
+    video.addEventListener('error', () => {
+        console.warn("Background Video failed to load.");
+        video.style.display = 'none'; // 完全に非表示にする
+    });
+}
+
