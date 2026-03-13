@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRChat-OSC-Keyboard | 非公式サイト</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Zero-MD -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3?register"></script>
+    <!-- Shuffle Text -->
+    <script src="https://cdn.jsdelivr.net/npm/shuffle-text/build/shuffle-text.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #00f3ff;
+            --primary-glow: rgba(0, 243, 255, 0.6);
+            --accent: #ff00ff;
+            --accent-glow: rgba(255, 0, 255, 0.6);
+            --bg-dark: #020202;
+            --card-bg: rgba(5, 10, 12, 0.9);
+            --text-main: #e0faff;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Noto Sans JP', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* 起動時ローディング */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease;
+        }
+        #loader.fade-out { opacity: 0; pointer-events: none; }
+        .loading-bar-container {
+            width: 250px;
+            height: 2px;
+            background: rgba(255,255,255,0.1);
+            margin-top: 20px;
+            position: relative;
+        }
+        .loading-bar {
+            width: 0%;
+            height: 100%;
+            background: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+            transition: width 0.1s ease;
+        }
+        .loading-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: var(--primary);
+        }
+
+        /* 背景ビデオ & スキャンライン */
+        .video-background {
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+        }
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.35;
+            filter: brightness(0.7) contrast(1.2);
+        }
+        .scanlines {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.1) 50%);
+            background-size: 100% 4px;
+            z-index: -5;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 派手なヘッダー */
+        header {
+            text-align: center;
+            margin-bottom: 120px;
+            perspective: 1000px;
+        }
+        .logo {
+            max-width: 320px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 20px var(--primary-glow));
+            animation: logo-float 6s ease-in-out infinite;
+        }
+        @keyframes logo-float {
+            0%, 100% { transform: translateY(0) rotateY(0); }
+            50% { transform: translateY(-15px) rotateY(5deg); }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            letter-spacing: 0.3em;
+            margin: 10px 0;
+            background: linear-gradient(90deg, #fff, var(--primary), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px var(--primary-glow);
+            animation: text-flicker 4s linear infinite;
+        }
+
+        /* セクション装飾 */
+        .section-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 243, 255, 0.15);
+            position: relative;
+            padding: 50px;
+            margin-bottom: 60px;
+            backdrop-filter: blur(10px);
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .section-box:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
+        }
+        .section-box::before {
+            content: "";
+            position: absolute;
+            top: -1px; left: -1px; width: 60px; height: 60px;
+            border-top: 3px solid var(--primary);
+            border-left: 3px solid var(--primary);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-transform: uppercase;
+        }
+        h2 span { font-size: 0.9rem; opacity: 0.5; }
+
+        /* 機能カード */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .feature-item {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-item:hover {
+            background: rgba(0, 243, 255, 0.08);
+        }
+        .feature-item::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0; width: 0; height: 2px;
+            background: var(--primary);
+            transition: width 0.4s;
+        }
+        .feature-item:hover::after { width: 100%; }
+
+        /* スクリーンショット */
+        .preview-container {
+            position: relative;
+            margin: 40px 0;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        .app-preview {
+            width: 100%;
+            filter: contrast(1.1) brightness(0.9);
+            transition: 0.5s;
+        }
+        .preview-container:hover .app-preview {
+            transform: scale(1.03);
+            filter: contrast(1.2) brightness(1.1);
+        }
+
+        /* アコーディオン */
+        details summary { list-style: none; cursor: pointer; }
+        .readme-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .toggle-icon { font-size: 1.2rem; transition: 0.3s; color: var(--accent); }
+        details[open] .toggle-icon { transform: rotate(90deg) scale(1.2); text-shadow: 0 0 10px var(--accent-glow); }
+
+        /* ボタン */
+        .btn {
+            position: relative;
+            padding: 18px 45px;
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn:hover::before { left: 100%; }
+        .btn:hover {
+            box-shadow: 0 0 25px var(--primary-glow);
+            background: rgba(0, 243, 255, 0.1);
+            color: #fff;
+        }
+        .btn-primary { background: var(--primary); color: #000; }
+        .btn-primary:hover { color: #000; background: #fff; }
+
+        /* OSC通信パーティクル */
+        .osc-particle {
+            position: fixed;
+            background: var(--primary);
+            height: 1px;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.8;
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        /* アニメーション */
+        @keyframes text-flicker {
+            0%, 100% { opacity: 1; }
+            92% { opacity: 1; }
+            93% { opacity: 0.8; }
+            94% { opacity: 1; }
+            95% { opacity: 0.5; }
+            96% { opacity: 1; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 100px 40px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem;
+            color: #444;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 派手なローダー -->
+    <div id="loader">
+        <div class="loading-text">INITIALIZING SYSTEM...</div>
+        <div class="loading-bar-container">
+            <div class="loading-bar" id="loadBar"></div>
+        </div>
+        <div id="loadStatus" style="font-family:'Fira Code'; font-size:10px; margin-top:10px; color:#444;">[ 0% ] CHECKING OSC PROTOCOLS...</div>
+    </div>
+
+    <div class="scanlines"></div>
+    <div class="video-background">
+        <video id="bgVideo" autoplay muted loop playsinline>
+            <source src="bg.webm" type="video/webm">
+        </video>
+    </div>
+
+    <div class="container">
+        <header>
+            <img src="https://raw.githubusercontent.com/fuku2019/VRChat-OSC-Keyboard/refs/heads/main/docs/fake_logo_3.png" alt="Logo" class="logo">
+            <h1 id="shuffle-target">VRCHAT-OSC-KEYBOARD</h1>
+            <p class="tagline">≫ This site was created by AI. It may contain errors.</p>
+        </header>
+
+        <section class="section-box">
+            <h2><span>[ 01 ]</span> CONCEPT</h2>
+            <p>
+                <strong>VRChat-OSC-Keyboard</strong> は、仮想世界での対話を加速させるサイバー・インターフェースです。<br>
+                VR空間という物理的制約を超え、手元の物理キーボードをOSC経由で直結。日本語入力の障壁を取り払い、最高速度のコミュニケーションを提供します。
+            </p>
+            <div class="preview-container">
+                <img src="app_img_0.webp" alt="UI Preview" class="app-preview">
+            </div>
+        </section>
+
+        <section class="section-box">
+            <h2><span>[ 02 ]</span> MODULES</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <strong style="color:var(--primary)">NEURO-INPUT</strong>
+                    物理キーボードをブラインドタッチで。VRを脱ぐことなく思考を文字に変換。
+                </div>
+                <div class="feature-item">
+                    <strong style="color:var(--primary)">OSC-STREAM</strong>
+                    OSCプロトコルによる低遅延通信。IMEに依存しない安定した入力を実現。
+                </div>
+                <div class="feature-item">
+                    <strong style="color:var(--primary)">HUD-OVERLAY</strong>
+                    透過・最前面表示対応。VR内オーバーレイツールとの相性も抜群。
+                </div>
+            </div>
+        </section>
+
+        <section class="section-box" style="border-left: 4px solid var(--accent);">
+            <details>
+                <summary>
+                    <div class="readme-header">
+                        <h2><span>[ 03 ]</span> DATA ARCHIVE (README)</h2>
+                        <span class="toggle-icon">▶</span>
+                    </div>
+                </summary>
+                <zero-md src="https://raw.githubusercontent.com/fuku2019/VRChat-OSC-Keyboard/refs/heads/main/README.md">
+                    <template>
+                        <style>
+                            .markdown-body { color: #a0c0c5; background: transparent !important; font-size: 0.9rem; word-break: break-all; }
+                            .markdown-body h1, .markdown-body h2 { color: var(--primary); border-bottom: 1px solid rgba(0,243,255,0.2); padding-bottom: 0.5rem; }
+                            .markdown-body code { background: rgba(255,255,255,0.1); color: var(--accent); padding: 2px 5px; }
+                            .markdown-body pre { background: #000; border: 1px solid #222; padding: 1rem; overflow-x: auto; }
+                            .markdown-body img { max-width: 100%; border: 1px solid #333; }
+                        </style>
+                    </template>
+                </zero-md>
+            </details>
+        </section>
+
+        <section style="text-align: center; padding: 40px 0;">
+            <div class="button-group" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <a href="https://github.com/fuku2019/VRChat-OSC-Keyboard/releases/latest" target="_blank" class="btn btn-primary">INSTALL NOW</a>
+                <a href="https://github.com/fuku2019/VRChat-OSC-Keyboard" target="_blank" class="btn">VIEW SOURCE</a>
+            </div>
+        </section>
+
+        <footer>
+            TERMINAL SESSION ACTIVE // &copy; 2026 UNOFFICIAL VRCHAT OSC KEYBOARD SITE
+        </footer>
+    </div>
+
+    <script>
+        // ローディング演出
+        window.addEventListener('load', () => {
+            const bar = document.getElementById('loadBar');
+            const status = document.getElementById('loadStatus');
+            const loader = document.getElementById('loader');
+            let progress = 0;
+
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
+                bar.style.width = progress + '%';
+                status.innerText = `[ ${Math.floor(progress)}% ] FETCHING ASSETS: ${Math.random().toString(16).substr(2, 8).toUpperCase()}`;
+
+                if (progress === 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loader.classList.add('fade-out');
+                        initEffects();
+                    }, 500);
+                }
+            }, 80);
+        });
+
+        function initEffects() {
+            // タイトルシャッフル
+            const title = new ShuffleText(document.getElementById('shuffle-target'));
+            title.duration = 1500;
+            title.start();
+
+            // OSCパケットパーティクル
+            spawnOSCParticles();
+        }
+
+        function spawnOSCParticles() {
+            setInterval(() => {
+                const p = document.createElement('div');
+                p.className = 'osc-particle';
+                const isHorizontal = Math.random() > 0.5;
+                
+                const startX = Math.random() * window.innerWidth;
+                const startY = Math.random() * window.innerHeight;
+                const length = 50 + Math.random() * 150;
+                
+                p.style.left = startX + 'px';
+                p.style.top = startY + 'px';
+                
+                if(isHorizontal) {
+                    p.style.width = length + 'px';
+                } else {
+                    p.style.width = '1px';
+                    p.style.height = length + 'px';
+                }
+
+                document.body.appendChild(p);
+
+                p.animate([
+                    { opacity: 0, transform: 'scale(0)' },
+                    { opacity: 0.8, transform: 'scale(1)', offset: 0.2 },
+                    { opacity: 0, transform: `translate(${Math.random()*100-50}px, ${Math.random()*100-50}px)` }
+                ], {
+                    duration: 1000 + Math.random() * 1000,
+                    easing: 'linear'
+                }).onfinish = () => p.remove();
+            }, 200);
+        }
+
+        // マウスパララックス & グリッチ
+        document.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 50;
+            const y = (window.innerHeight / 2 - e.pageY) / 50;
+            const video = document.getElementById('bgVideo');
+            if(video) video.style.transform = `scale(1.1) translate(${x}px, ${y}px)`;
+        });
+
+        // 隠し要素：キーを押すと一瞬グリッチする
+        window.addEventListener('keydown', () => {
+            document.body.style.filter = 'invert(1) hue-rotate(180deg)';
+            setTimeout(() => {
+                document.body.style.filter = 'none';
+            }, 30);
+        });
+    </script>
+</body>
+</html>
+
