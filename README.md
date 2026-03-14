@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<head>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3?register"></script>
+</head>
+
+<zero-md>
+<script type="text/markdown">
+
 [vok_repo]:https://github.com/fuku2019/VRChat-OSC-Keyboard
 [site]:https://nrtm22.github.io/unofficial-vrchat-osc-keyboard-site/
 
@@ -13,3 +21,6 @@ VRChat用ツール、 [VRChat OSC KeyBoard][vok_repo] の非公式な、紹介�
 #### 非公式サイト:
   - メイン: [https://nrtm22.github.io/unofficial-vrchat-osc-keyboard-site/][site]
   - AIによって作成されたウェブサイト: https://nrtm22.github.io/unofficial-vrchat-osc-keyboard-site/gemini_site.html
+
+</script>
+</zero-md>
