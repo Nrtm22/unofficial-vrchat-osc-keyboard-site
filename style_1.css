@@ -118,11 +118,11 @@ img {
 
 /* ヘッダー */
 header {
-    background-color: rgb(236 254 255 / 40%);
+    background-color: color-mix(in srgb, var(--card-bg), transparent 40%);
     border-radius: 2dvmax;
     color: whitesmoke;
-    box-shadow: 1dvmin 1dvmin 4dvmin 0 color-mix(in srgb, var(--card-bg), transparent 90%);
-    backdrop-filter: blur(8px);
+    box-shadow: 1dvmin 1dvmin 4dvmin 0 color-mix(in srgb, var(--card-bg), transparent 80%);
+    backdrop-filter: blur(4px);
     text-align: center;
     margin: 2dvh;
     margin-bottom: 0;
@@ -130,7 +130,7 @@ header {
 
 header .container {
 	max-width: 100dvw;
-    text-shadow: 0.075rem 0.075rem 0.2rem black;
+    /* text-shadow: 0.075rem 0.075rem 0.2rem black; */
 }
 
 a {
@@ -165,10 +165,13 @@ header h1 {
     letter-spacing: 0.025rem;
     line-height: 2.525rem;
     color: white;
+    padding-bottom: 1rem;
+    border-bottom: 0.25rem solid var(--primary-200);
 }
 
 header h2 {
     margin: 0.75rem;
+    margin-top: 1rem;
     font-size: 1.5rem;
     letter-spacing: 0.015rem;
     line-height: 1.525rem;
@@ -183,6 +186,92 @@ header h2 {
     margin-top: 10px;
     opacity: 0.9;
     font-weight: bold;
+}
+
+.scam-review {
+	width: 66dvw;
+	margin: auto;
+	padding-bottom: 0;
+	background: rgba(0, 0, 0, 0.66);
+	border-radius: 2dvmax;
+	/* border: 0.25rem solid var(--primary-300); */
+	text-shadow: none;
+}
+
+.scam-review p {
+	font-size: 6dvmin;
+	line-height: 1.25;
+	margin-top: 0.25em;
+	margin-bottom: 0;
+	font-weight: bold;
+}
+
+.review-name {
+	font-size: 4dvmin;
+	margin-height: 0;
+}
+
+.scroll {
+  width: 66dvw;
+  margin: auto;
+  margin-top:1rem;
+  margin-bottom: 1rem;
+  background: rgba(0, 0, 0, 0.66);
+  border-radius: 2dvmax;
+  padding: 0;
+  height: 1.5em;
+  font-size  : 140%;
+  line-height: 1.5em;
+  text-align : center;
+  text-shadow: none;
+  overflow   : hidden;
+}
+.scroll span{
+  display     : inline-block;
+  white-space : nowrap;
+  line-height : 1.5em;
+  animation   : scrollAnime 6s linear infinite;
+}
+@keyframes scrollAnime{
+    0% { transform: translateY(1.5em)}
+  100% { transform: translateY(-4.5em)}
+}
+
+.rateoya {
+  height: 12dvmin;                /* 星のサイズに合わせて少し余裕を持たせる */
+  display: flex;                /* Flexboxを有効にする */
+  justify-content: center;      /* 左右中央に寄せる */
+  align-items: center;          /* 上下中央に寄せる（必要に応じて） */
+  text-shadow: none;
+}
+
+.rate {
+  position: relative;           /* before/afterの基準点 */
+  display: inline-block;        /* 幅をコンテンツ（星）に合わせる */
+  width: 5em;                   /* 星5つ分の幅を確保 */
+  height: 1em;                  /* 高さを1文字分に固定 */
+  font-size: 10dvmin;
+  line-height: 1;
+}
+
+.rate:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "★★★★★";
+  color: #999999;               /* 下地のグレーの星 */
+  white-space: nowrap;
+}
+
+.rate:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "★★★★★";
+  color: #ffff1a;               /* 重ねる黄色の星 */
+  white-space: nowrap;
+  overflow: hidden;
+  width: 1.5em;                 /* ここで評価の数（50%なら2.5em）を調整 */
 }
 
 .header-img {
@@ -208,7 +297,7 @@ header h2 {
     border-radius: 2dvmax;
     text-align: center;
     box-shadow: 1dvmin 1dvmin 4dvmin 0 color-mix(in srgb, var(--card-bg), transparent 80%);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(4px);
     margin-top: 4dvmin;
     margin-bottom: 0;
 }
@@ -230,7 +319,7 @@ header h2 {
     border-radius: 2dvmax;
     color: whitesmoke;
     box-shadow: 1dvmin 1dvmin 4dvmin 0 color-mix(in srgb, var(--card-bg), transparent 80%);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(4px);
     margin-top: 4dvmin;
     margin-bottom: 0;
 }
@@ -272,12 +361,12 @@ header h2 {
 /* ボタン */
 .bottom-card {
     text-align: center;
-    background: rgb(255 255 255 / 40%);
+    background: color-mix(in srgb, var(--card-bg), transparent 40%);
     padding: 2dvh 6dvw;
     border-radius: 2dvmax;
-    color: #333;
-    box-shadow: 1dvmin 1dvmin 4dvmin 0 color-mix(in srgb, var(--card-bg), transparent 90%);
-    backdrop-filter: blur(8px);
+    color: whitesmoke;
+    box-shadow: 1dvmin 1dvmin 4dvmin 0 color-mix(in srgb, var(--card-bg), transparent 80%);
+    backdrop-filter: blur(4px);
     margin-top: 4dvmin;
     margin-bottom: 0;
 }
@@ -303,6 +392,57 @@ header h2 {
 
 .btn:hover {
     background-color: var(--primary-200);
+}
+
+
+
+/* --- 3D背景用のスタイル --- */
+.polygon-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: var(--dypad);
+}
+
+.scene {
+	/* JSから受け取る変数を適用 */
+    width: var(--dysize); 
+    height: var(--dysize);
+    max-width: 80dvmin;
+    max-height: 80dvmin;
+    /* 奥行きのパース*/
+    perspective: 100dvw;
+}
+
+.polygon {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    /* 奥行き(tz)をアニメーション内でも維持するように変数を指定 */
+    animation: spin-floating 30s infinite linear;
+}
+
+@keyframes spin-floating {
+    0%   { transform: rotateX(var(--rx)) rotateY(0deg); }
+    100% { transform: rotateX(var(--rx)) rotateY(360deg); }
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
 }
 
 /* フッター */
