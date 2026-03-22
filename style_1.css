@@ -54,6 +54,11 @@ img {
     height: auto;
 }
 
+video {
+    width: 100%;
+    height: auto;
+}
+
 /* ロード画面のスタイル */
 #loader {
     position: fixed;
@@ -281,6 +286,10 @@ header h2 {
 }
 
 .img-img {
+    object-fit: cover;
+}
+
+.vid-vid {
     object-fit: cover;
 }
 
