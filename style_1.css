@@ -17,7 +17,7 @@
 
 body {
     font-family: Roboto, 'Noto Sans JP', sans-serif;
-    background: var(--primary-200);
+    background: var(--primary-400);
     color: whitesmoke;
     line-height: 1.6;
     margin: 0;
@@ -118,7 +118,7 @@ img {
 
 /* ヘッダー */
 header {
-    background-color: color-mix(in srgb, var(--card-bg), transparent 40%);
+    background: color-mix(in srgb, var(--card-bg), transparent 25%);
     border-radius: 2dvmax;
     color: whitesmoke;
     box-shadow: 1dvmin 1dvmin 4dvmin 0 color-mix(in srgb, var(--card-bg), transparent 80%);
@@ -184,7 +184,6 @@ header h2 {
 
 .subtitle {
     margin-top: 10px;
-    opacity: 0.9;
     font-weight: bold;
 }
 
@@ -291,7 +290,7 @@ header h2 {
 }
 
 .top-notice {
-    background: color-mix(in srgb, var(--card-bg), transparent 40%);
+    background: color-mix(in srgb, var(--card-bg), transparent 25%);
     color: whitesmoke;
     padding: 0.5rem 6dvw;
     border-radius: 2dvmax;
@@ -314,7 +313,7 @@ header h2 {
 
 /* メインカード */
 .hero-card {
-    background: color-mix(in srgb, var(--card-bg), transparent 40%);
+    background: color-mix(in srgb, var(--card-bg), transparent 25%);
     padding: 2dvh 6dvw;
     border-radius: 2dvmax;
     color: whitesmoke;
@@ -337,13 +336,16 @@ header h2 {
 
 .hero-card h3 {
     color: white;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     padding: 0 0.5rem;
     border-left: 0.5rem solid var(--primary-200);
 }
 
 .hero-card p {
     margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 550;
     padding: 0 1.5rem;
     line-height: 1.5rem;
 }
@@ -361,7 +363,7 @@ header h2 {
 /* ボタン */
 .bottom-card {
     text-align: center;
-    background: color-mix(in srgb, var(--card-bg), transparent 40%);
+    background: color-mix(in srgb, var(--card-bg), transparent 25%);
     padding: 2dvh 6dvw;
     border-radius: 2dvmax;
     color: whitesmoke;
@@ -369,10 +371,6 @@ header h2 {
     backdrop-filter: blur(4px);
     margin-top: 4dvmin;
     margin-bottom: 0;
-}
-
-.bottom-card p a{
-	text-shadow: 0.1rem 0.1rem 0.4rem black;
 }
 
 .btn {
@@ -450,5 +448,5 @@ footer {
     text-align: center;
     padding: 2dvh;
     font-size: 0.75rem;
-    color: #888;
+    color: #333;
 }
