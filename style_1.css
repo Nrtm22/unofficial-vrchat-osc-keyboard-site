@@ -77,13 +77,6 @@ video {
     transition: opacity 0.5s ease-in;
 }
 
-/* メインコンテンツ */
-#mainC {
-	/* transform: translateY(100%); */
-	opacity: 1;
-	transition: opacity 2.0s ease-out, transform 3.0s ease-out;
-}
-
 /* ロード中の画像 */
 .loader-img {
     width: 100dvh;
@@ -95,11 +88,6 @@ video {
     color: var(--primary-50);
     font-weight: bold;
     text-align: center;
-}
-
-#mainC.loaded {
-	opacity: 1;
-	/* transform: translateY(0); */
 }
 
 /* 消える時のアニメーションクラス */
@@ -118,7 +106,7 @@ video {
 .container {
     max-width: 100dvmin;
     margin: 0 auto;
-    padding: 2dvh;
+    padding: 2dvmin;
 }
 
 /* ヘッダー */
@@ -129,12 +117,13 @@ header {
     box-shadow: 1dvmin 1dvmin 4dvmin 0 color-mix(in srgb, var(--card-bg), transparent 80%);
     backdrop-filter: blur(4px);
     text-align: center;
-    margin: 2dvh;
+    margin: 2dvmin;
     margin-bottom: 0;
 }
 
 header .container {
 	max-width: 100dvw;
+    padding: 1rem;
     /* text-shadow: 0.075rem 0.075rem 0.2rem black; */
 }
 
@@ -145,10 +134,8 @@ a {
 details {
     background: var(--primary-300);
     text-align: left;
-    margin: 0 auto;
-    margin-bottom: 2dvmin;
-    padding: 1.5dvh 1.5dvw;
-    padding-bottom: 0.5dvmin;
+    margin: 1rem auto;
+    padding: 1rem  2dvw;
     border-radius: 2dvmax;
     color: #333;
     font-weight: bold;
@@ -156,7 +143,6 @@ details {
 
 summary {
     background: transparent;
-    padding-bottom: 1.5dvh;
     text-align: center;
 }
 
@@ -165,13 +151,14 @@ line-height: 1.5rem;
 }
 
 header h1 {
-    margin: 0;
+    margin: 0 auto;
     font-size: 2.5rem;
     letter-spacing: 0.025rem;
     line-height: 2.525rem;
     color: white;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
     border-bottom: 0.25rem solid var(--primary-200);
+    width: fit-content;
 }
 
 header h2 {
@@ -212,70 +199,69 @@ header h2 {
 
 .review-name {
 	font-size: 4dvmin;
-	margin-height: 0;
 }
 
 .scroll {
-  width: 66dvw;
-  margin: auto;
-  margin-top:1rem;
-  margin-bottom: 1rem;
-  background: rgba(0, 0, 0, 0.66);
-  border-radius: 2dvmax;
-  padding: 0;
-  height: 1.5em;
-  font-size  : 140%;
-  line-height: 1.5em;
-  text-align : center;
-  text-shadow: none;
-  overflow   : hidden;
+    width: 66dvw;
+    margin: auto;
+    margin-top:1rem;
+    margin-bottom: 1rem;
+    background: rgba(0, 0, 0, 0.66);
+    border-radius: 2dvmax;
+    padding: 0;
+    height: 1.5em;
+    font-size  : 140%;
+    line-height: 1.5em;
+    text-align : center;
+    text-shadow: none;
+    overflow   : hidden;
 }
 .scroll span{
-  display     : inline-block;
-  white-space : nowrap;
-  line-height : 1.5em;
-  animation   : scrollAnime 6s linear infinite;
+    display     : inline-block;
+    white-space : nowrap;
+    line-height : 1.5em;
+    animation   : scrollAnime 6s linear infinite;
 }
 @keyframes scrollAnime{
     0% { transform: translateY(1.5em)}
-  100% { transform: translateY(-4.5em)}
+    100% { transform: translateY(-4.5em)}
 }
 
 .rateoya {
-  height: 12dvmin;                /* 星のサイズに合わせて少し余裕を持たせる */
-  display: flex;                /* Flexboxを有効にする */
-  justify-content: center;      /* 左右中央に寄せる */
-  align-items: center;          /* 上下中央に寄せる（必要に応じて） */
-  text-shadow: none;
+    height: 12dvmin;                /* 星のサイズに合わせて少し余裕を持たせる */
+    display: flex;                /* Flexboxを有効にする */
+    justify-content: center;      /* 左右中央に寄せる */
+    align-items: center;          /* 上下中央に寄せる（必要に応じて） */
+    text-shadow: none;
 }
 
 .rate {
-  position: relative;           /* before/afterの基準点 */
-  display: inline-block;        /* 幅をコンテンツ（星）に合わせる */
-  width: 5em;                   /* 星5つ分の幅を確保 */
-  height: 1em;                  /* 高さを1文字分に固定 */
-  font-size: 10dvmin;
-  line-height: 1;
+    position: relative;           /* before/afterの基準点 */
+    display: inline-block;        /* 幅をコンテンツ（星）に合わせる */
+    width: 5em;                   /* 星5つ分の幅を確保 */
+    height: 1em;                  /* 高さを1文字分に固定 */
+    font-size: 10dvmin;
+    line-height: 1;
 }
 
 .rate:before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: "★★★★★";
-  color: #999999;               /* 下地のグレーの星 */
-  white-space: nowrap;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "★★★★★";
+    color: #999999;               /* 下地のグレーの星 */
+    white-space: nowrap;
 }
 
 .rate:after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: "★★★★★";
-  color: #ffff1a;               /* 重ねる黄色の星 */
-  white-space: nowrap;
-  overflow: hidden;
-  width: 1.5em;                 /* ここで評価の数（50%なら2.5em）を調整 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "★★★★★";
+    color: #ffff1a;               /* 重ねる黄色の星 */
+    white-space: nowrap;
+    overflow: hidden;
+    width: 1.5em;                 /* ここで評価の数（50%なら2.5em）を調整 */
 }
 
 .header-img {
@@ -287,6 +273,8 @@ header h2 {
 
 .img-img {
     object-fit: cover;
+    max-width: 100dvmin;
+    border-radius: 1cqmin;
 }
 
 .vid-vid {
@@ -301,7 +289,7 @@ header h2 {
 .top-notice {
     background: color-mix(in srgb, var(--card-bg), transparent 25%);
     color: whitesmoke;
-    padding: 0.5rem 6dvw;
+    padding: 1rem;
     border-radius: 2dvmax;
     text-align: center;
     box-shadow: 1dvmin 1dvmin 4dvmin 0 color-mix(in srgb, var(--card-bg), transparent 80%);
@@ -317,13 +305,14 @@ header h2 {
 .top-notice h3 {
     font-weight: bold;
     border-bottom: 0.25rem solid var(--primary-200);
-    margin-bottom: 0;
+    margin-bottom: 1rem;
+    margin-top: 0;
 }
 
 /* メインカード */
 .hero-card {
     background: color-mix(in srgb, var(--card-bg), transparent 25%);
-    padding: 2dvh 6dvw;
+    padding: 1rem;
     border-radius: 2dvmax;
     color: whitesmoke;
     box-shadow: 1dvmin 1dvmin 4dvmin 0 color-mix(in srgb, var(--card-bg), transparent 80%);
@@ -341,6 +330,8 @@ header h2 {
     color: white;
     padding: 0.5rem;
     border-bottom: 0.25rem solid var(--primary-200);
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .hero-card h3 {
@@ -373,7 +364,7 @@ header h2 {
 .bottom-card {
     text-align: center;
     background: color-mix(in srgb, var(--card-bg), transparent 25%);
-    padding: 2dvh 6dvw;
+    padding: 1rem;
     border-radius: 2dvmax;
     color: whitesmoke;
     box-shadow: 1dvmin 1dvmin 4dvmin 0 color-mix(in srgb, var(--card-bg), transparent 80%);
@@ -385,14 +376,15 @@ header h2 {
 .btn {
     display: flex;
 	flex-direction: column;
-    padding: 4dvmin  2dvw;
+    padding: 1rem  2dvw;
+    max-width: 100dvmin;
     background-color: var(--primary-300);
     color: #333;
     text-decoration: none;
     border-radius: 100dvmax;
     font-weight: bold;
     transition: background-color 0.2s;
-    margin: 4dvmin auto;
+    margin: 1rem auto;
     word-break: break-all;
     transition-duration: 0.5s;
 }
@@ -400,8 +392,6 @@ header h2 {
 .btn:hover {
     background-color: var(--primary-200);
 }
-
-
 
 /* --- 3D背景用のスタイル --- */
 .polygon-background {

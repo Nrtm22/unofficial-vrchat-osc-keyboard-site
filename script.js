@@ -27,12 +27,6 @@ fetch(jsonUrl)
       document.getElementById('file-name-display').innerText = exeAsset.name;
     }
     
-    // リリースノート（body）の反映
-    const mdElement = document.getElementById('release-body-md');
-    if (data.body) {
-        mdElement.innerHTML = `<script type="text/markdown">${data.body}<\/script>`;
-    }
-    
   })
   .catch(err => {
     console.error("JSONの読み込みに失敗しました:", err);
