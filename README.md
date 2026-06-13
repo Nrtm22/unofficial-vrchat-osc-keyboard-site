@@ -24,3 +24,4 @@
   - メディアを見る場所: https://nrtm22.github.io/unofficial-vrchat-osc-keyboard-site/media-view
   - AIによって作成されたウェブサイト:
     https://nrtm22.github.io/unofficial-vrchat-osc-keyboard-site/gemini_site.html
+  - ![Static Badge](https://img.shields.io/badge/New!-red?style=flat-square) レガシーブラウザ対応版: https://nrtm22.github.io/unofficial-vrchat-osc-keyboard-site/legacy/
