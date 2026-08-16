@@ -190,7 +190,7 @@ header h2 {
 }
 
 .scam-review p {
-	font-size: 6dvmin;
+	font-size: 2dvmin;
 	line-height: 1.25;
 	margin-top: 0.25em;
 	margin-bottom: 0;
@@ -198,7 +198,7 @@ header h2 {
 }
 
 .review-name {
-	font-size: 4dvmin;
+	font-size: 1.5dvmin;
 }
 
 .scroll {
@@ -261,7 +261,7 @@ header h2 {
     color: #ffff1a;               /* 重ねる黄色の星 */
     white-space: nowrap;
     overflow: hidden;
-    width: 1.5em;                 /* ここで評価の数（50%なら2.5em）を調整 */
+    width: 4.5em;                 /* ここで評価の数（50%なら2.5em）を調整 */
 }
 
 .header-img {
