@@ -275,6 +275,12 @@ header h2 {
     object-fit: cover;
     max-width: 100dvmin;
     border-radius: 1cqmin;
+    transition: 0.175s ease-out;
+}
+
+.img-img:hover{
+    transform: scale(1.05);
+    transition: 0.175s ease-out;
 }
 
 .vid-vid {

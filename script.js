@@ -45,14 +45,7 @@ window.addEventListener('load', () => {
 	    loader.classList.add('loaded');
 	    const mainC = document.getElementById('mainC');
 	    mainC.classList.add('loaded');
-	    // テキストシャッフル
-		const el = document.getElementById("shuffle-pls");
-		const text = new ShuffleText(el);
-		text.duration = 2000; 
-		text.sourceRandomCharacter = el.innerText;
-		text.emptyCharacter = "";
-		text.start();
-		}, 500);
+		}, 100);
 });
 
 const video = document.querySelector('.video-background video');
